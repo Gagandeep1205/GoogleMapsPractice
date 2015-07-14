@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <googleMaps/googleMaps.h>
+#import <CoreLocation/CoreLocation.h>
+#import "DataModal.h"
+#import "customTableViewCell.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <CLLocationManagerDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIKeyInput>
 
+@property (weak, nonatomic) IBOutlet UITextField *TFSearcLoc;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearchLoc;
+- (IBAction)actionBtnSearchLoc:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *myMap;
+@property (nonatomic, strong) CLGeocoder *geocoder;
+@property (weak, nonatomic) IBOutlet UITableView *tablePredictions;
+@property (weak, nonatomic) IBOutlet customTableViewCell *actionCustomCell;
 
 @end
 
