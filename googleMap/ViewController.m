@@ -33,7 +33,7 @@
     marker.map = map;
     [self.myMap addSubview:map];
     _tablePredictions.hidden = YES;
-    arrPredictions = [NSMutableArray new];
+    
 }
 
 -(void)viewWillLayoutSubviews
@@ -153,7 +153,7 @@
         NSLog(@"%@",response_success);
         arrPredictions = [[response_success valueForKey:@"predictions"] mutableCopy];
         [_tablePredictions reloadData];
-        
+        NSLog(@"%d",[arrPredictions count]);
     }:^(NSError *response_error) {
         NSLog(@"Couldn't Load Images");
         
@@ -178,7 +178,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [arrPredictions count];
+    return 5;
 }
 
 - (customTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -194,6 +194,8 @@
     _tablePredictions.hidden = YES;
     location = selectedCell.labelPredictions.text;
     [self geocode:(location)];
+    [self.view endEditing:YES];
+    
 }
 
 
